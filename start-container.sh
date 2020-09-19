@@ -1,5 +1,6 @@
 #!/bin/bash
 # 脚本用来替代docker-compose的，按顺序启动 短链接服务，转换服务 以及UI
+# 本机想测试的话，需要把 sub-nginx.confi的换为localhost
 
 
 # 短链接服务
@@ -12,5 +13,5 @@ docker run -d --restart always --name myurls -p 8002:8002 --link redis:redis  br
 docker run -d --restart=always --name sub -p 25500:25500 bradyzm/subconverter:latest
 
 # UI 服务
-docker run -d -p 80:80 --name sub-ui --link sub:sub  --link myurls:short bradyzm/sub-ui:debug
+docker run -d -p 80:80 --name sub-ui --link sub:sub  --link myurls:short bradyzm/sub-ui:latest
 
