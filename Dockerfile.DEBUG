@@ -20,6 +20,7 @@ RUN yarn build
 FROM bradyzm/centos7.8-node14:latest
 COPY --from=build /app/dist /usr/share/nginx/html
 COPY --from=build /app/sub-nginx.conf /etc/nginx/conf.d/
+COPY --from=build /app/nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
 
 # ENTRYPOINT [ "tail", "-f" ]

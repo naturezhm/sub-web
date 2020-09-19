@@ -13,5 +13,5 @@ docker run -d --restart always --name myurls -p 8002:8002 --link redis:redis  br
 docker run -d --restart=always --name sub -p 25500:25500 bradyzm/subconverter:latest
 
 # UI 服务
-docker run -d -p 80:80 --name sub-ui --link sub:sub  --link myurls:short bradyzm/sub-ui:latest
+docker run -d -p 80:80 --name sub-ui --link sub:sub  --link myurls:short -v /root/data/log:/var/log/nginx bradyzm/sub-ui:1.2
 
